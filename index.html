@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0"
+    />
+    <title>Numaya & Amir — Invitation (Mobile)</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Great+Vibes&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Parisienne&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Parisienne&family=Roboto:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* MOBILE-ONLY: Hide invite on wide screens and show a friendly message */
+      :root {
+        --accent: #a83279;
+        --accent-2: #ff6f95;
+        --paper: #fff8f0;
+        --text: #2b2b2b;
+        --card-radius: 18px;
+        --max-width: 430px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif, system-ui, Segoe UI, Roboto, Arial;
+        background: linear-gradient(180deg, #fffdfc, #fbf7f8);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        /* padding:18px; */
+      }
+
+      /* Desktop warning area (visible only on wide screens) */
+      .desktop-warning {
+        display: none;
+        max-width: var(--max-width);
+        width: 100%;
+        text-align: center;
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(18, 18, 18, 0.06);
+      }
+      .desktop-warning h2 {
+        margin: 0 0 6px;
+        font-size: 1.1rem;
+        color: var(--accent);
+      }
+      .desktop-warning p {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        color: #444;
+      }
+      .qr-wrap {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      /* Main invite container (mobile design) */
+      .invite {
+        display: block;
+        width: 100%;
+        max-width: var(--max-width);
+        background: transparent;
+      }
+
+      .card {
+        background: white;
+        /* border-radius:var(--card-radius); */
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        padding-bottom: 16px;
+        animation: cardEnter 0.6s ease;
+      }
+
+      /* floral header */
+      .floral {
+        display: block;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        background: linear-gradient(
+          180deg,
+          rgba(168, 50, 121, 0.06),
+          rgba(255, 111, 149, 0.02)
+        );
+        scale: 1.2;
+      }
+
+      .front-inner {
+        padding: 16px;
+        text-align: center;
+      }
+
+      .subtitle {
+        font-family: "Charm", cursive;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        color: var(--accent);
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+
+      .names {
+        font-family: "Satisfy", cursive;
+        font-size: 2.2rem;
+        color: var(--accent-2);
+        margin: 6px 0 4px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      .meta {
+        font-family: "Charm", cursive;
+        font-size: 0.9rem;
+        color: #444;
+        margin: 6px 0;
+        font-weight: 600;
+      }
+
+      .illustration {
+        width: 86%;
+        max-width: 320px;
+        margin: 12px auto;
+        margin-left: 12px;
+        display: block;
+        border-radius: 12px;
+        /* box-shadow:0 8px 24px rgba(0,0,0,0.07); */
+      }
+
+      /* actions row */
+      .actions {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: white;
+        font-weight: 600;
+        font-size: 0.86rem;
+        text-decoration: none;
+        box-shadow: 0 6px 18px rgba(168, 50, 121, 0.12);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid rgba(168, 50, 121, 0.12);
+        box-shadow: none;
+      }
+
+      /* map + gallery card */
+      .card .section {
+        padding: 14px 16px;
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      .map-thumb {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #eee;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .map-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .map-thumb .overlay,
+      .video-thumb .overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.05)
+        );
+        color: white;
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+      .address {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #333;
+        line-height: 1.25;
+      }
+      .small {
+        font-size: 0.82rem;
+        color: #666;
+        margin-top: 6px;
+      }
+
+      /* letter-style block */
+      .letter {
+        background: var(--paper);
+        /* border-radius:12px; */
+        padding: 18px;
+        line-height: 1.6;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        font-family: "Charm", cursive;
+        font-size: 1.05rem;
+        color: #2b2b2b;
+        /* margin-bottom: 18px; */
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      .letter .title {
+        /* font-family: "Parisienne", cursive; */
+        font-size: 1.6rem;
+        color: var(--accent);
+        text-align: center;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .letter p {
+        margin: 16px 0;
+        font-size: 1.2rem;
+      }
+
+      .signature {
+        text-align: right;
+        padding-top: 10px;
+        /* font-family: "Parisienne", cursive; */
+        font-size: 1.22rem;
+      }
+
+      .rsvp {
+        text-align: left;
+        padding-top: 16px;
+        /* font-family: "Parisienne", cursive; */
+        font-size: 1.22rem;
+      }
+
+      .highlight {
+        color: var(--accent-2);
+      }
+
+      /* gallery small row */
+      .media-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .media-row img,
+      .media-row .video-thumb {
+        width: calc(50% - 4px);
+        height: 20vh;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+      .video-thumb {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      /* modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 12, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 1200;
+      }
+      .modal.open {
+        display: flex;
+      }
+      .modal-content {
+        width: 100%;
+        max-width: 920px;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        max-height: 92vh;
+      }
+      .modal-head {
+        display: flex;
+        justify-content: flex-end;
+        padding: 8px;
+        background: #fafafa;
+      }
+      .modal-body {
+        padding: 0;
+      }
+      .modal-body iframe,
+      .modal-body img {
+        width: 100%;
+        height: 60vh;
+        object-fit: cover;
+        border: 0;
+      }
+
+      /* small helpers */
+      .muted {
+        /* color: #6f6f6f; */
+        font-size: 1rem;
+      }
+      .center {
+        text-align: center;
+      }
+
+      .creator-watermark {
+        color: transparent;
+        text-align: center;
+        font-family: "Satisfy", cursive;
+        font-weight: 700;
+        margin-top: 50px;
+      }
+      .urdu-title {
+        width: 200px;
+        display: block;
+        margin: auto;
+      }
+
+      /* subtle animations */
+      @keyframes cardEnter {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @media (min-width: 760px) {
+        /* hide mobile invite on wider screens, show desktop message */
+        .invite {
+          display: none;
+        }
+        .desktop-warning {
+          display: block;
+        }
+      }
+      @media (max-width: 359px) {
+        .floral {
+          height: 110px;
+        }
+        .names {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Desktop / large-screen message -->
+    <div class="desktop-warning">
+      <h2>Open on a mobile device</h2>
+      <p>
+        This invitation is optimized for mobile. Scan the QR code below with
+        your phone camera to open it there.
+      </p>
+      <div class="qr-wrap">
+        <img
+          id="qrImg"
+          alt="QR to open on phone"
+          width="180"
+          height="180"
+          style="
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+          "
+        />
+        <p class="muted">Or open this page's URL on your phone browser</p>
+      </div>
+    </div>
+
+    <!-- Invite (Mobile layout) -->
+    <main class="invite" id="inviteRoot" role="main">
+      <!-- Front card (poster-style) -->
+      <article class="card" aria-labelledby="namesHeading">
+        <img class="floral" src="img/floral.jpg" alt="Floral decoration" />
+
+        <div class="front-inner">
+          <div class="subtitle">Save the Date</div>
+          <h1 class="names" id="namesHeading">Numaya &amp; Amir</h1>
+          <div class="meta">Thursday • 20 November 2025 • 12:00 PM onwards</div>
+
+          <!-- illustration (replace with your own couple / mandap image) -->
+          <img
+            class="illustration"
+            src="img/couple.png"
+            alt="Couple illustration"
+          />
+
+          <!-- Action buttons (directions, call, save, share, RSVP) -->
+          <div class="actions" style="padding-bottom: 10px">
+            <a
+              class="btn"
+              id="directionsBtn"
+              href="https://maps.app.goo.gl/4xGKSMpG9ryyKcWy5"
+              target="_blank"
+              rel="noopener"
+              >📍 Directions</a
+            >
+            <a class="btn ghost" id="callBtn" href="tel:+917275540470"
+              >📞 Call</a
+            >
+            <a class="btn ghost" id="saveBtn" href="#" title="Add to calendar"
+              >📅 Save</a
+            >
+            <button class="btn ghost" id="shareBtn" type="button">
+              🔗 Share
+            </button>
+            <!-- <button class="btn" id="rsvpOpen" type="button">✉️ RSVP</button> -->
+          </div>
+        </div>
+
+        <!-- Map preview -->
+        <div class="section" style="padding: 16px 16px 16px">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <div>
+              <div style="font-weight: 700">Rose Palace, Bahraich</div>
+              <div class="small">
+                Thursday, 20 Nov 2025 — Nikah & Dawat-e-Ta'am
+              </div>
+            </div>
+            <div style="text-align: right">
+              <div
+                style="
+                  font-size: 0.9rem;
+                  color: var(--accent);
+                  font-weight: 700;
+                "
+              >
+                Venue
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 10px">
+            <!-- clickable thumbnail which opens the full map modal -->
+            <div class="map-thumb" id="openMap">
+              <img alt="Map preview" src="img/rose palace.jpg" />
+              <div class="overlay">Tap to view map & directions</div>
+            </div>
+
+            <div class="address">
+              Rose Palace, New Bypass,<br />
+              Bahraich, Uttar Pradesh, India
+              <div class="small">
+                Tap "Directions" to open Google Maps with your location. You can
+                also open the map preview to see the place and share it.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media preview: image + video thumbnails -->
+        <div class="section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <div style="font-weight: 700">Photos & Video</div>
+            <div class="muted">Tap to preview</div>
+          </div>
+
+          <div class="media-row">
+            <img
+              src="img/map-preview.jpg"
+              alt="map photo"
+              data-type="image"
+              data-src="img/map-preview.jpg"
+              class="thumb"
+            />
+            <img
+              src="img/rose palace.jpg"
+              alt="Venue photo"
+              data-type="image"
+              data-src="img/rose palace.jpg"
+              class="thumb"
+            />
+          </div>
+          <div class="media-row" style="width: 100%">
+            <div
+              class="video-thumb thumb"
+              data-type="video"
+              data-src="img/video.mp4"
+              style="width: 100%; height: 45vh"
+            >
+              <img
+                class="media-row"
+                src="img/video_thumb.png"
+                alt="Venue Video"
+                style="width: 100%; height: 100%; margin-top: 0"
+              />
+              <!-- <span class="overlay">▶ Watch</span> -->
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Letter section (formal text) -->
+      <article
+        class="letter"
+        aria-label="Formal invitation letter Urdu"
+        style="text-align: end; margin-bottom: 0"
+      >
+        <!-- <div class="title">محترم جناب</div> -->
+        <img class="urdu-title" src="img/sirkat.png" alt="title" />
+
+        <p>
+          محترم جناب, بِحمد سبحان و تعالی، میں اہلیہ مرحوم علی احمد، بڑے فخر اور
+          اعزاز کے ساتھ اپنی پوتی نمایاں ندیم سلمہا دختر ندیم احمد کا رشتۂ
+          ازدواجی عامرحمزہ سلمہ ابن محمد طاہر صاحب، نیپال گنج کے ساتھ طے پانے کی
+          اطلاع دیتی ہوں۔
+        </p>
+
+        <p>
+          بروز جمعرات، بتاریخ 20 نومبر 2025، بمقام روز پیلس، دوپہر 12 بجے سےمحفل
+          نکاح اور دعوت تعام کو رونق بخشنے کے لئے ہم آپ کی بابرکت حاضری اور
+          دعاؤں کے طلبگار ہیں۔
+        </p>
+
+        <div class="signature">
+          المستدعی<br />
+          اہلیہ مرحوم علی احمد<br />
+          <span class="muted">موبائل: 7275540470 • 7054638593</span>
+        </div>
+
+        <div class="rsvp muted">
+          <strong class="highlight">چشم براہ</strong> <br />
+          ڈاکٹر محمد آفاق <br />
+          ڈاکٹر محمد عتیق <br />
+          فہیم احمد <br />
+          احسن عتیق <br />
+          محسن عتیق <br />
+          عاصم عتیق <br />
+          حمزہ حسیب <br />
+          نعمان ندیم <br />
+        </div>
+      </article>
+      <!-- Letter section (formal text) -->
+      <article class="letter" aria-label="Formal invitation letter English">
+        <div class="title">Mohtaram Janab</div>
+
+        <p>
+          With profound gratitude to the Almighty, I, Mrs. Ali Ahmad (late),
+          feel greatly honoured to announce the sacred matrimonial bond of my
+          granddaughter, <strong class="highlight">Numaya Nadeem</strong> (D/o
+          Nadeem Ahmad), with
+          <strong class="highlight">Amir Hamzah</strong> (S/o Mohd. Tahir Sb) of
+          Nepalgunj.
+        </p>
+
+        <p>
+          We seek your esteemed presence and blessings to make the Nikah
+          Ceremony and Dawat-e-Ta’am more illuminating on
+          <strong class="highlight">Thursday, 20th November 2025</strong>, at
+          Rose Palace, from 12 p.m. onwards.
+        </p>
+
+        <div class="signature">
+          Warm Regard<br />
+          Mrs. Late Ali Ahmad<br />
+          Qazipura Bahraich <br />
+          <span class="muted">Mo. 7275540470 • 7054638593</span>
+        </div>
+
+        <div class="rsvp muted">
+          <strong class="highlight">RSVP</strong> <br />
+          Dr Mohd Afaq <br />
+          Dr Mohd Atique <br />
+          Faheem Ahmad <br />
+          Ahsan Atique <br />
+          Mohsin Atique <br />
+          Asim Atique <br />
+          Hamzah Haseeb <br />
+          Noman Nadeem <br />
+        </div>
+
+        <!-- Creator WaterMark -->
+        <div class="creator-watermark">
+          <p>Created By- Hamzah Haseeb</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Generic modal used for map, image or video preview -->
+    <div id="modal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <div class="modal-head">
+          <button id="closeModal" class="btn ghost" style="margin-right: 10px">
+            ✖ Close
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- dynamically injected iframe/img -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Simple inline JS for interactivity -->
+    <script>
+      // Helpers
+      const inviteUrl = location.href;
+      // generate QR on desktop area (Google Chart API)
+      const qr = document.getElementById("qrImg");
+      if (qr) qr.src = "img/qr.png";
+
+      // Modal open/close
+      const modal = document.getElementById("modal");
+      const modalBody = document.getElementById("modalBody");
+      const closeModal = document.getElementById("closeModal");
+
+      function openModal(contentHtml) {
+        modalBody.innerHTML = contentHtml;
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+      function closeModalFn() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        modalBody.innerHTML = "";
+      }
+      closeModal.addEventListener("click", closeModalFn);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModalFn();
+      });
+
+      // Map thumbnail opens map embed
+      document.getElementById("openMap").addEventListener("click", () => {
+        //const q = encodeURIComponent('Rose Palace, Bahraich');
+        const embed =
+          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.770725858085!2d81.5764207!3d27.569625199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3999a9000dc5fc75%3A0x2d5fcad5b653e211!2sRose%20palace!5e0!3m2!1sen!2sus!4v1762450420013!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+        openModal(
+          embed +
+            '<div style="padding:12px;text-align:center"><a class="btn" href="https://maps.app.goo.gl/Uxv1VgAkTqzDAns16" target="_blank">Open Directions in Maps</a></div>'
+        );
+      });
+
+      // Media thumbnails (image/video)
+      document.querySelectorAll(".thumb").forEach((el) => {
+        el.addEventListener("click", () => {
+          const type = el.dataset.type;
+          const src = el.dataset.src;
+          if (type === "image") {
+            openModal('<img src="' + src + '" alt="Photo">');
+          } else if (type === "video") {
+            // embed YouTube
+            openModal(
+              '<iframe src="' +
+                src +
+                '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            );
+          }
+        });
+      });
+
+      // Directions button already links to Google Maps with destination; nothing extra required
+
+      // Save to Calendar: opens Google Calendar event with prefilled details
+      document.getElementById("saveBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        // Dates in form YYYYMMDDTHHMMSS (local) -> Google will accept naive local times; modify if needed
+        const start = "20251120T120000";
+        const end = "20251120T150000";
+        const title = encodeURIComponent("Nikah Ceremony - Numaya & Amir");
+        const details = encodeURIComponent(
+          `Nikah Ceremony and Dawat-e-Ta'am at Rose Palace, Bahraich. Contact: 7275540470`
+        );
+        const location = encodeURIComponent("Rose Palace, Bahraich");
+        const url =
+          "https://www.google.com/calendar/render?action=TEMPLATE&text=" +
+          title +
+          "&dates=" +
+          start +
+          "/" +
+          end +
+          "&details=" +
+          details +
+          "&location=" +
+          location +
+          "&sf=true&output=xml";
+        window.open(url, "_blank");
+      });
+
+      // Share button: use native share if available, otherwise copy link
+      document
+        .getElementById("shareBtn")
+        .addEventListener("click", async () => {
+          const shareData = {
+            title: "Numaya & Amir — Wedding Invitation",
+            text: "Nikah Ceremony — 20 Nov 2025 at Rose Palace, Bahraich. Open invite:",
+            url: inviteUrl,
+          };
+          if (navigator.share) {
+            try {
+              await navigator.share(shareData);
+            } catch (e) {
+              /* user cancelled */
+            }
+          } else {
+            try {
+              await navigator.clipboard.writeText(inviteUrl);
+              alert("Invite link copied to clipboard. Paste to share.");
+            } catch (e) {
+              prompt("Copy this link to share:", inviteUrl);
+            }
+          }
+        });
+
+      // RSVP button -> opens a small in-browser form which turns into a mailto link
+      document.getElementById("rsvpOpen").addEventListener("click", () => {
+        const emailTo = "hamzahhaseeb840@example.com"; // <-- replace with real RSVP email
+        const formHtml = `
+        <div style="padding:18px;">
+          <h3 style="margin:0 0 10px">RSVP</h3>
+          <label style="display:block;font-size:0.9rem;margin-bottom:6px">Your name</label>
+          <input id="rsvpName" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee" placeholder="Your full name">
+          <label style="display:block;font-size:0.9rem;margin:10px 0 6px">Message / Guests</label>
+          <textarea id="rsvpMsg" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee" rows="3" placeholder="Number of guests, wishes..."></textarea>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button id="rsvpSend" class="btn">Send RSVP</button>
+            <button id="rsvpCancel" class="btn ghost">Cancel</button>
+          </div>
+          <p style="margin-top:10px;font-size:0.82rem;color:#666">Note: replace RSVP email in the code with your real address before sending.</p>
+        </div>`;
+        openModal(formHtml);
+
+        // attach listeners after injected
+        setTimeout(() => {
+          document
+            .getElementById("rsvpCancel")
+            .addEventListener("click", closeModalFn);
+          document.getElementById("rsvpSend").addEventListener("click", () => {
+            const name = encodeURIComponent(
+              document.getElementById("rsvpName").value || "Guest"
+            );
+            const msg = encodeURIComponent(
+              document.getElementById("rsvpMsg").value || ""
+            );
+            const subject = encodeURIComponent("RSVP: Nikah — Numaya & Amir");
+            const body = encodeURIComponent(
+              `Name: ${decodeURIComponent(name)}%0D%0A${decodeURIComponent(
+                msg
+              )}%0D%0A`
+            );
+            // mailto link
+            const mailto =
+              "mailto:" +
+              encodeURIComponent(emailTo) +
+              "?subject=" +
+              subject +
+              "&body=" +
+              body;
+            // open user's mail client
+            window.location.href = mailto;
+          });
+        }, 100);
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModalFn();
+      });
+
+      // Close modal helper
+      function closeModalFn() {
+        modal.classList.remove("open");
+        modalBody.innerHTML = "";
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      // Optional: copy-to-clipboard for phone call button (some devices have no tel handler)
+      document.getElementById("callBtn").addEventListener("click", (e) => {
+        // if device supports tel handler it will work; otherwise copy number to clipboard
+        // we let the browser handle tel:, but provide fallback by copying number
+        const fallback = false; // keep false so normal tel: works; change to true to force copy
+        if (fallback) {
+          e.preventDefault();
+          navigator.clipboard
+            .writeText("+917275540470")
+            .then(() => alert("Phone number copied: +91 72755 40470"));
+        }
+      });
+    </script>
+  </body>
+</html>
