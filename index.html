@@ -31,10 +31,10 @@
     <style>
       /* MOBILE-ONLY: Hide invite on wide screens and show a friendly message */
       :root {
-        --accent: #a83279;
-        --accent-2: #ff6f95;
+        --accent: #21388a;
+        --accent-2: #5f71aa;
         --paper: #fff8f0;
-        --text: #2b2b2b;
+        --text: #21388a;
         --card-radius: 18px;
         --max-width: 430px;
       }
@@ -48,6 +48,7 @@
       body {
         margin: 0;
         font-family: "Roboto", sans-serif, system-ui, Segoe UI, Roboto, Arial;
+        font-family: "Charm", cursive;
         background: linear-gradient(180deg, #fffdfc, #fbf7f8);
         color: var(--text);
         -webkit-font-smoothing: antialiased;
@@ -175,7 +176,7 @@
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
         color: white;
         font-weight: 600;
-        font-size: 0.86rem;
+        font-size: 1rem;
         text-decoration: none;
         box-shadow: 0 6px 18px rgba(168, 50, 121, 0.12);
       }
@@ -427,41 +428,79 @@
     <main class="invite" id="inviteRoot" role="main">
       <!-- Front card (poster-style) -->
       <article class="card" aria-labelledby="namesHeading">
-        <img class="floral" src="img/floral.jpg" alt="Floral decoration" />
+        <!-- <img class="floral" src="img/floral.jpg" alt="Floral decoration" /> -->
 
-        <div class="front-inner">
-          <h1 class="names" id="namesHeading">Saltanat Tanveer
-            <br> &amp; <br> Er. Altamash Shafeegue</h1>
-            <div class="subtitle">Going to be together by Wedlock</div>
-          <div class="meta">Friday • 23 January 2026 • 07:00 PM onwards</div>
+        <!-- <div class="front-inner"> -->
+        <!-- <h1 class="names" id="namesHeading">Saltanat Tanveer <br> &amp; <br> Er. Altamash Shafeegue</h1> -->
+        <!-- <div class="subtitle">Going to be together by Wedlock</div> -->
+        <!-- <div class="meta">Friday • 23 January 2026 • 07:00 PM onwards</div> -->
 
-          <!-- illustration (replace with your own couple / mandap image) -->
-          <img
+        <!-- <img
             class="illustration"
             src="img/couple.png"
             alt="Couple illustration"
-          />
+          /> -->
 
-          <!-- Action buttons (directions, call, save, share, RSVP) -->
-          <div class="actions" style="padding-bottom: 10px">
-            <a
-              class="btn"
-              id="directionsBtn"
-              href="https://maps.app.goo.gl/4xGKSMpG9ryyKcWy5"
-              target="_blank"
-              rel="noopener"
-              >📍 Directions</a
+        <video width="100%" autoplay muted loop>
+          <source src="img/Alsum.mp4" type="video/mp4" />
+        </video>
+
+        <div class="actions" style="padding-bottom: 20px">
+          <a
+            class="btn"
+            style="background: #05c1c8"
+            id="directionsBtn"
+            href="https://maps.app.goo.gl/6VRWRJQVF4yDEcWL9"
+            target="_blank"
+            rel="noopener"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
             >
-            <a class="btn ghost" id="callBtn" href="tel:+917275540470"
-              >📞 Call</a
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+              /></svg
+            >Direction</a
+          >
+          <a class="btn" style="background: #04eb96" id="callBtn" href="tel:+911234567890"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
             >
-            <!-- <a class="btn ghost" id="saveBtn" href="#" title="Add to calendar"
-              >📅 Save</a
-            > -->
-          </div>
+              <path
+                d="M6.62 10.79a15.09 15.09 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.57 3.58 1 1 0 01-.24 1.02l-2.2 2.19z"
+              />
+            </svg>
+            Call</a
+          >
+          <a
+            class="btn"
+            style="background: #128b3f"
+            href="https://wa.me/9779812556412?text=Hello%20I%20need%20help%20in%20dicrections%20to%20the%20wedding%20venue."
+            target="_blank"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.62 10.79a15.09 15.09 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.57 3.58 1 1 0 01-.24 1.02l-2.2 2.19z"
+              />
+            </svg>
+            WhatsApp
+          </a>
         </div>
+        <!-- </div> -->
 
-        <!-- Map preview -->
         <div class="section" style="padding: 16px 16px 16px">
           <div
             style="
@@ -471,10 +510,10 @@
             "
           >
             <div>
-              <div style="font-weight: 700">Rose Palace, Bahraich</div>
-              <div class="small">
-                Thursday, 20 Nov 2025 — Nikah & Dawat-e-Ta'am
+              <div style="font-weight: 700">
+                Ban Sarita Resort, Gonda Road, Bahraich
               </div>
+              <div class="small">Friday, 23 JAN 2026 — Wedding Celebration</div>
             </div>
             <div style="text-align: right">
               <div
@@ -490,14 +529,13 @@
           </div>
 
           <div style="margin-top: 10px">
-            <!-- clickable thumbnail which opens the full map modal -->
             <div class="map-thumb" id="openMap">
-              <img alt="Map preview" src="img/rose palace.jpg" />
+              <img alt="Map preview" src="img/ban-sarita.webp" />
               <div class="overlay">Tap to view map & directions</div>
             </div>
 
             <div class="address">
-              Rose Palace, New Bypass,<br />
+              Ban Sarita Resort, Gonda Road<br />
               Bahraich, Uttar Pradesh, India
               <div class="small">
                 Tap "Directions" to open Google Maps with your location. You can
@@ -507,7 +545,6 @@
           </div>
         </div>
 
-        <!-- Media preview: image + video thumbnails -->
         <div class="section">
           <div
             style="
@@ -516,43 +553,26 @@
               align-items: center;
             "
           >
-            <div style="font-weight: 700">Photos & Video</div>
+            <div style="font-weight: 700">Photos</div>
             <div class="muted">Tap to preview</div>
           </div>
 
           <div class="media-row">
             <img
-              src="img/map-preview.jpg"
+              src="img/ban sarita 1.webp"
               alt="map photo"
               data-type="image"
-              data-src="img/map-preview.jpg"
+              data-src="img/ban sarita 1.webp"
               class="thumb"
             />
             <img
-              src="img/rose palace.jpg"
+              src="img/ban-sarita-map.jpg"
               alt="Venue photo"
               data-type="image"
-              data-src="img/rose palace.jpg"
+              data-src="img/ban-sarita-map.jpg"
               class="thumb"
             />
           </div>
-
-          <!-- <div class="media-row" style="width: 100%">
-            <div
-              class="video-thumb thumb"
-              data-type="video"
-              data-src="img/video.mp4"
-              style="width: 100%; height: 45vh"
-            >
-              <img
-                class="media-row"
-                src="img/video_thumb.png"
-                alt="Venue Video"
-                style="width: 100%; height: 100%; margin-top: 0"
-              />
-            </div>
-          </div> -->
-
         </div>
       </article>
     </main>
@@ -603,10 +623,10 @@
       document.getElementById("openMap").addEventListener("click", () => {
         //const q = encodeURIComponent('Rose Palace, Bahraich');
         const embed =
-          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.770725858085!2d81.5764207!3d27.569625199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3999a9000dc5fc75%3A0x2d5fcad5b653e211!2sRose%20palace!5e0!3m2!1sen!2sus!4v1762450420013!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3200.767710867119!2d81.6340017!3d27.5636446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3999ae91af374c27%3A0xab8a185a757a1de5!2sBAN%20SARITA%20RESORT!5e1!3m2!1sen!2sus!4v1765313749477!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
         openModal(
           embed +
-            '<div style="padding:12px;text-align:center"><a class="btn" href="https://maps.app.goo.gl/Uxv1VgAkTqzDAns16" target="_blank">Open Directions in Maps</a></div>'
+            '<div style="padding:12px;text-align:center"><a class="btn" href="https://maps.app.goo.gl/ozRPfsBskjk4qGtx8" target="_blank">Open Directions in Maps</a></div>'
         );
       });
 
